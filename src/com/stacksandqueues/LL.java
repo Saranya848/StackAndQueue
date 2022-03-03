@@ -6,10 +6,10 @@ public class LL {
 	/**
 	 * pop - this method is used to remote element from top of the stack isEmpty -
 	 * this method is used to check stack is empty or not peek - this method returns
-	 * peek element of the stack Method for push Method for print
+	 * peek element of the stack Method for push Method for print append - this
+	 * method adds element to queue
 	 */
-	Node top;
-	Node head;
+	Node top, head, tail;
 	int size;
 
 	/**
@@ -23,6 +23,9 @@ public class LL {
 		head = newnode;
 	}
 
+	/**
+	 * pop - this method is used to remote element from top of the stack
+	 */
 	public int pop() {
 		if (isEmpty()) {
 			throw new EmptyStackException();
@@ -51,6 +54,21 @@ public class LL {
 		}
 		return top.data;
 
+	}
+
+	public void append(int data) {
+		Node newNode = new Node(data);
+		newNode.data = data;
+		newNode.next = null;
+		if (head == null) {
+			head = newNode;
+		} else {
+			Node temp = newNode;
+			temp = head;
+			while (temp.next != null)
+				temp = temp.next;
+			temp.next = newNode;
+		}
 	}
 
 	/**
